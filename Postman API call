@@ -1,0 +1,77 @@
+1. Add customer in database
+
+  Post method call : http://localhost:8096/customer/save
+  
+  {
+  "customerId": 101,
+  "customerName": "Rahul kumar",
+  "title" : "mr",
+  "customerEmail":"rahul@gmail.com",
+  "customerNumber":"8877684747",
+  "dept": "HR"  
+  }
+  
+  {
+  "customerId": 102,
+  "customerName": "Ajay kumar",
+  "title" : "mr",
+  "customerEmail":"ajay@gmail.com",
+  "customerNumber":"9131169057",
+  "dept": "DEV"  
+}
+  
+2. Get All Customer 
+  Get method call : http://localhost:8096/customer/getCustomers
+   No need to pass anything in request 
+   
+   
+   
+   
+   
+   
+   
+   
+   Mockito Fremework
+   -------------------------
+Student student1=mock(Student.class);
+when(student1.getAge()).thenReturn(20);
+
+Student student2=mock(Student.class);
+when(student2.getAge()).thenReturn(8);
+
+-----------
+// Java Program to Illustrate Unit Testing of Service Class
+
+package com.demo.services;
+
+import static org.mockito.Mockito.verify;
+
+import com.demo.repo.PersonRepo;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+@ExtendWith(MockitoExtension.class)
+
+// Main class
+class PersonServiceTest {
+
+	@Mock private PersonRepo personRepo;
+
+	private PersonService personService;
+
+	@BeforeEach void setUp()
+	{
+		this.personService
+			= new PersonService(this.personRepo);
+	}
+
+	@Test void getAllPerson()
+	{
+		personService.getAllPerson();
+		verify(personRepo).findAll();
+	}
+}
+ 

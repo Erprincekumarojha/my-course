@@ -1,0 +1,40 @@
+CREATE SCHEMA 'dSS';
+
+-- dSS.customer definition
+
+CREATE TABLE `customer` (
+  `customerid` int NOT NULL,
+  `customername` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `customeremail` varchar(55) DEFAULT NULL,
+  `customerNumber` varchar(15) DEFAULT NULL,
+  `dept` varchar(25) DEFAULT NULL,
+  PRIMARY KEY (`customerid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+----------------------
+
+mysql> desc customer;
++-----------------+--------------+------+-----+---------+-------+
+| Field           | Type         | Null | Key | Default | Extra |
++-----------------+--------------+------+-----+---------+-------+
+| customer_id     | int          | NO   | PRI | NULL    |       |
+| customer_email  | varchar(255) | YES  |     | NULL    |       |
+| customer_name   | varchar(255) | YES  |     | NULL    |       |
+| customer_number | varchar(255) | YES  |     | NULL    |       |
+| dept            | varchar(255) | YES  |     | NULL    |       |
+| title           | varchar(255) | YES  |     | NULL    |       |
++-----------------+--------------+------+-----+---------+-------+
+6 rows in set (0.26 sec)
+
+mysql> select * from customer;
++-------------+-----------------+---------------+-----------------+------+-------+
+| customer_id | customer_email  | customer_name | customer_number | dept | title |
++-------------+-----------------+---------------+-----------------+------+-------+
+|         102 | priti@gmail.com | priti kumar   | 9131169057      | DEV  | mr    |
++-------------+-----------------+---------------+-----------------+------+-------+
+1 row in set (0.37 sec)
+
+
+TODO : / Swagger/ Spring Security with jwt token / login user
+
