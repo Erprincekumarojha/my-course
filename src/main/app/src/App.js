@@ -7,6 +7,7 @@ import ContactPage from './common/contact';
 import NotFoundPage from './error/pagenotfound';
 import Header from './header/header';
 import LoginPage from './common/login';
+import UserDashboard from './component/userDashboard';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/about" component={AboutPage} />
           <Route path="/contact" component={ContactPage} />
           <Route path="/login" component={LoginPage} />
+          <Route path="/dashboard" component={UserDashboard} />
           <Route component={NotFoundPage} />
         </Switch>
       </div>

@@ -1,25 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
+import axios from 'axios';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+//all constant Data
+let  BASE_URL = "http://localhost:8096";
 
-export default App;
+export const baseURL = ()=> BASE_URL;
+
+//ALL API call
+export const loginAPI = async (url, body) => await axios.post(url+'/login', body);
+export const registerAPI = async (url, body) => await axios.post(url+'/register', body);
+export const HomeAPI = async (url, body) => await axios.post(url+'/home', body);
+export const dataAPI = async (url, body) => await axios.post(url+'/data', body);
+export const customerAPI = async (url, body) => await axios.post(url+'/customer', body);
