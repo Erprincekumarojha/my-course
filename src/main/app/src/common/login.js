@@ -1,24 +1,36 @@
 
 import React, { useState } from 'react';
 import '../style/login.css'; 
+import { baseURL, loginAPI } from './services';
+import { useHistory } from 'react-router-dom'; 
 
 function LoginPage() {
-  // State variables to hold the user ID and password
+  
   const [userId, setUserId] = useState('');
   const [password, setPassword] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
+  const history = useHistory();
+  let request = {};
 
-  // Function to handle form submission
-  const handleSubmit = (event) => {
-    event.preventDefault(); // Prevent default form submission behavior
+  const handleSubmit = async () => {
+    try {
+      request.userId = userId;
+      request.password = password;
+      alert("Request login API : "+JSON.stringify(request));
+      const response = loginAPI(baseURL, { request});
 
-    // Check if the user ID and password are valid (for demonstration purposes, just check if they're not empty)
-    if (userId !== '' && password !== '') {
-      // Set loggedIn state to true
-      setLoggedIn(true);
-      alert('Login successful!');
-    } else {
-      alert('Please enter a valid user ID and password.');
+      console.log(response.data)
+      // Assuming your backend returns a token upon successful login
+      const { token } = response.data;
+
+      // Store the token in localStorage or session storage for future API calls
+      localStorage.setItem('token', token);
+    
+      // Optionally, you can redirect the user to another page upon successful login
+       history.push('/dashboard');
+    } catch (error) {
+      console.error('Login error:', error.message);
+      history.push('/notfound');
     }
   };
 
@@ -31,6 +43,7 @@ function LoginPage() {
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="login-form">
+           <h5>User Login Page</h5>
           <label>
             User ID:
             <input
